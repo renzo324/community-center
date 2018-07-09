@@ -1,10 +1,24 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { Container, Row, Col, ListGroup, ListGroupItem, Button } from 'reactstrap';
+import { Container, Row, Col, ListGroup, ListGroupItem, Button, ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.toggle = this.toggle.bind(this);
+    this.state = {
+      dropdownOpen: false
+    };
+  }
+
+  toggle() {
+    this.setState({
+      dropdownOpen: !this.state.dropdownOpen
+    });
+  }
 
 
   render() {
@@ -22,7 +36,17 @@ class App extends Component {
             <Col md="8">
               <Router>
                 <ListGroup>              
-                  <ListGroupItem tag="a" href="#" className="justify-content-between"><Link to="">Crafts Room</Link> </ListGroupItem>
+                  <ListGroupItem tag="a" href="#" className="justify-content-between"><ButtonDropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+                  <DropdownToggle caret>Crafts Room</DropdownToggle>
+                  <DropdownMenu>
+                    <DropdownItem>Spring Foraging Bundle</DropdownItem>
+                    <DropdownItem>Summer Foraging Bundle</DropdownItem>
+                    <DropdownItem>Fall Foraging Bundle</DropdownItem>
+                    <DropdownItem>Winter Foraging Bundle</DropdownItem>
+                    <DropdownItem>Construction Bundle </DropdownItem>
+                    <DropdownItem>Exotic Foraging Bundle</DropdownItem>
+                  </DropdownMenu>
+                  </ButtonDropdown> </ListGroupItem>
                   <ListGroupItem tag="a" href="#" className="justify-content-between"><Link to="">Pantry</Link> </ListGroupItem>
                   <ListGroupItem tag="a" href="#" className="justify-content-between"><Link to="">Fish Tank</Link> </ListGroupItem>
                   <ListGroupItem tag="a" href="#" className="justify-content-between"><Link to="">Boiler Room</Link> </ListGroupItem>
