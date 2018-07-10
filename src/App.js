@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { Container, Row, Col, ListGroup, ListGroupItem, Button, ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { Container, Row, Col, ListGroup, ListGroupItem, Button} from 'reactstrap';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Crafts from './crafts';
 
 class App extends Component {
   constructor(props) {
@@ -36,22 +37,9 @@ class App extends Component {
             <Col md="8">
               <Router>
                 <ListGroup>              
-                  <ListGroupItem tag="a" href="#" className="justify-content-between"><ButtonDropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-                  <DropdownToggle caret>Crafts Room</DropdownToggle>
-                  <DropdownMenu>
-                    <DropdownItem>Spring Foraging Bundle</DropdownItem>
-                    <DropdownItem>Summer Foraging Bundle</DropdownItem>
-                    <DropdownItem>Fall Foraging Bundle</DropdownItem>
-                    <DropdownItem>Winter Foraging Bundle</DropdownItem>
-                    <DropdownItem>Construction Bundle </DropdownItem>
-                    <DropdownItem>Exotic Foraging Bundle</DropdownItem>
-                  </DropdownMenu>
-                  </ButtonDropdown> </ListGroupItem>
-                  <ListGroupItem tag="a" href="#" className="justify-content-between"><Link to="">Pantry</Link> </ListGroupItem>
-                  <ListGroupItem tag="a" href="#" className="justify-content-between"><Link to="">Fish Tank</Link> </ListGroupItem>
-                  <ListGroupItem tag="a" href="#" className="justify-content-between"><Link to="">Boiler Room</Link> </ListGroupItem>
-                  <ListGroupItem tag="a" href="#" className="justify-content-between"><Link to="">Bulletin Board</Link> </ListGroupItem>
-                  <ListGroupItem tag="a" href="#" className="justify-content-between"><Link to="">Vault</Link> </ListGroupItem>
+                  <ListGroupItem className="justify-content-between"><Link to="/crafts">Crafts Room</Link> </ListGroupItem>
+                  <Route exact path="/" component={App} />
+                  <Route path="/crafts" component={Crafts} />
                 </ListGroup> 
               </Router>
               <Button outline color="secondary">Go Home</Button>
